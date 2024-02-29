@@ -19,6 +19,19 @@ class Tablero {
             }
         }
     }
+    checkNeighbours(cell, i, j) {
+        let count = 0;
+        for (let x = i - 1; x <= i + 1; x++) {
+            for (let y = j - 1; y <= j + 1; y++) {
+                if (x >= 0 && x < this.filas && y >= 0 && y < this.columnas) {
+                    if (this.casillas[x][y].getBomb()) {
+                        count++;
+                    }
+                }
+            }
+        }
+        return count;
+    }
     getTablero() {
         return this.casillas;
     }
