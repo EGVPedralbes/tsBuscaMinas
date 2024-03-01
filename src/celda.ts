@@ -22,6 +22,7 @@ class Celda {
 
     public setFlag(): void {
         this.isFlag = !this.isFlag;
+        console.log(this.isFlag);
     }
 
     public getRevealed(): boolean {

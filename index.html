@@ -16,30 +16,11 @@
         let cols = 5;
         let rows = 5;
         const juego = new Juego(cols, rows);
-        console.log(juego);
 
 
         document.getElementById("game").appendChild(juego.createTable());
-
-        document.getElementById("gameTable").addEventListener("click", function (event) {
-            let cell = event.target;
-            let id = cell.id.split("-");
-            let i = id[1];
-            let j = id[2];
-            console.log(parseInt(i) - 1, parseInt(j) - 1);
-            console.log(juego.tablero.checkNeighbours(parseInt(i), parseInt(j)));
-            cell.textContent = juego.tablero.casillas[i][j].isBomb ? lost(cell) : juego.tablero.checkNeighbours(cell, parseInt(i), parseInt(j));
-            if (juego.tablero.casillas[i][j].isBomb) {
-                setTimeout(() => {
-                    location.reload();
-                }, 1000);
-            }
-            juego.tablero.casillas[i][j].setRevealed();
-        });
-        function lost() {
-            return "X"
-
-        }
+        juego.addEventListeners();
+        
 
     </script>
 </body>

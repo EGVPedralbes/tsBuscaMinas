@@ -19,7 +19,7 @@ class Tablero {
             }
         }
     }
-    checkNeighbours(cell, i, j) {
+    checkNeighbours(i, j) {
         let count = 0;
         for (let x = i - 1; x <= i + 1; x++) {
             for (let y = j - 1; y <= j + 1; y++) {
@@ -30,7 +30,21 @@ class Tablero {
                 }
             }
         }
-        return count;
+        return "url(img/Minesweeper_" + count + ".gif)";
+    }
+    reveal(i, j) {
+        let trueI = i + 1;
+        let trueJ = j + 1;
+        let data = this.casillas[i][j].getBomb() ? "url(img/mina.png)" : this.checkNeighbours(trueI - 1, trueJ - 1).toString();
+        this.casillas[i][j].setRevealed();
+        // if(data=="url(img/mina.png)"){
+        //     this.lost();
+        // }
+        return data;
+    }
+    lost() {
+        alert("Perdiste");
+        // location.reload();
     }
     getTablero() {
         return this.casillas;
@@ -40,5 +54,22 @@ class Tablero {
     }
     getColumnas() {
         return this.columnas;
+    }
+    checkWin() {
+        let count = 0;
+        for (let i = 0; i < this.filas; i++) {
+            for (let j = 0; j < this.columnas; j++) {
+                if (this.casillas[i][j].getRevealed() || (this.casillas[i][j].getFlag() && this.casillas[i][j].getBomb())) {
+                    count++;
+                }
+            }
+        }
+        let toReutrn = false;
+        if (count == this.filas * this.columnas) {
+            toReutrn = true;
+        }
+        console.log(toReutrn);
+        console.log(count);
+        return toReutrn;
     }
 }

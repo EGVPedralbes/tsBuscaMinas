@@ -18,6 +18,7 @@ class Celda {
     }
     setFlag() {
         this.isFlag = !this.isFlag;
+        console.log(this.isFlag);
     }
     getRevealed() {
         return this.isRevealed;
