@@ -11,8 +11,8 @@ class Juego {
                 let cell = document.createElement("td");
                 cell.style.backgroundImage = `url(img/square.gif)`;
                 cell.style.backgroundSize = "cover";
-                cell.style.width = "19vw";
-                cell.style.height = "19vw";
+                cell.style.width = "5vw";
+                cell.style.height = "5vw";
                 cell.id = "cell-" + i + "-" + j;
                 row.appendChild(cell);
             }
@@ -50,8 +50,10 @@ class Juego {
                     }
                 }
                 if (this.tablero.checkWin()) {
-                    alert("Ganaste");
-                    location.reload();
+                    setTimeout(() => {
+                        alert("Ganaste");
+                        location.reload();
+                    }, 100);
                 }
             }
         });
@@ -94,8 +96,10 @@ class Juego {
                         }
                     }
                     if (this.tablero.checkWin()) {
-                        alert("Ganaste");
-                        location.reload();
+                        setTimeout(() => {
+                            alert("Ganaste");
+                            location.reload();
+                        }, 100);
                     }
                 }
             }

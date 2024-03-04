@@ -13,8 +13,8 @@ class Juego {
                 let cell = document.createElement("td");
                 cell.style.backgroundImage = `url(img/square.gif)`;
                 cell.style.backgroundSize = "cover";
-                cell.style.width = "19vw";
-                cell.style.height = "19vw";
+                cell.style.width = "5vw";
+                cell.style.height = "5vw";
                 cell.id = "cell-" + i + "-" + j;
                 row.appendChild(cell);
             }
@@ -57,9 +57,11 @@ class Juego {
                         cell.style.backgroundImage = `url("img/square.gif")`;
                     }
                 }
-                if(this.tablero.checkWin()){
-                    alert("Ganaste");
-                    location.reload();
+                if (this.tablero.checkWin()) {
+                    setTimeout(() => {
+                        alert("Ganaste");
+                        location.reload();
+                    }, 100);
                 }
             }
         });
@@ -72,7 +74,7 @@ class Juego {
             if (bgImage === `url("img/square.gif")`) {
                 cell.style.backgroundImage = this.tablero.reveal(parseInt(i), parseInt(j));
                 let newbgImage = cell.style.backgroundImage;
-                
+
                 if (newbgImage === 'url("img/mina.png")') {
                     for (let x = 0; x < this.tablero.getFilas(); x++) {
                         for (let y = 0; y < this.tablero.getColumnas(); y++) {
@@ -82,7 +84,7 @@ class Juego {
                                 cell.style.backgroundImage = image;
                             }
 
-                            
+
                         }
                     }
                     setTimeout(() => {
@@ -108,9 +110,11 @@ class Juego {
                             }
                         }
                     }
-                    if(this.tablero.checkWin()){
-                        alert("Ganaste");
-                        location.reload();
+                    if (this.tablero.checkWin()) {
+                        setTimeout(() => {
+                            alert("Ganaste");
+                            location.reload();
+                        }, 100);
                     }
                 }
             }
